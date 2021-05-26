@@ -2,6 +2,7 @@ import express from 'express'
 import routesEntidad from './routes/entidad'
 import routesCuentasCupo from './routes/cuentasCupo'
 import routesAbonarDesembolsar from './routes/abonarDesembolsar'
+import routesTransderencia from './routes/transferencia'
 
 
 const app = express()
@@ -14,6 +15,7 @@ const PORT = process.env.PORT;
 app.use('/', routesEntidad)
 app.use('/', routesCuentasCupo)
 app.use('/', routesAbonarDesembolsar)
+app.use('/', routesTransderencia)
 
 
 /*

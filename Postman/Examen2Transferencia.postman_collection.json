@@ -1,0 +1,20 @@
+{
+	"info": {
+		"_postman_id": "dcbfbb70-bc82-40f3-a300-c974e62adb4c",
+		"name": "Examen2Transferencia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Transferencia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
