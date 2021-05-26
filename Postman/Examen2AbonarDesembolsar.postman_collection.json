@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "6e785a5b-676f-47d2-b402-59c4f4c64bfd",
+		"name": "Examen2AbonarDesembolsar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Abonar",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cantidad\": 20.8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/cuentas_cupo/abonar/60ae0bad9d44654e08efb694",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"cuentas_cupo",
+						"abonar",
+						"60ae0bad9d44654e08efb694"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Desembolsar",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cantidad\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/cuentas_cupo/desembolsar/60ae0bad9d44654e08efb694",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"cuentas_cupo",
+						"desembolsar",
+						"60ae0bad9d44654e08efb694"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
