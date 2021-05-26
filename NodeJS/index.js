@@ -9,6 +9,32 @@ app.use(express.json())
 
 const PORT = process.env.PORT;
 
+// Listar entidades
+app.get('/api/entidades', async (request, response) => {
+  const entidades = await mongo.getAll('entidades')
+  response.status(200).json({
+    data: entidades,
+    message: 'Entidades Listadas'
+  })
+})
+
+// Obtener una sola entidad
+app.get('/api/entidades/:id', async (request, response) => {
+  const id = request.params.id
+  const entidad = await mongo.get('entidades', id)
+  if (entidad !== null) {
+    response.status(200).json({
+      data: entidad,
+      message: 'Entidad listada'
+    })
+  }else{
+    response.status(404).json({
+      id: id,
+      message: 'No encontrado'
+    })
+  }
+})
+
 // Insertar elemento
 app.post('/api/entidades', async (request, response) => {
   if (!request.body.razon || !request.body.tipoDoc  || !request.body.numeroDoc) {
@@ -22,82 +48,61 @@ app.post('/api/entidades', async (request, response) => {
     numeroDoc: request.body.numeroDoc
   }
   await mongo.create('entidades', entidad)
-  response.status(201).json(entidad)
+  response.status(201).json({
+    data: entidad,
+    message: 'Entidad agregada'
+  })
 })
+
+// Actualizas elemento
+app.patch('/api/entidades/:id', async (request, response) => {
+  const id = request.params.id
+  let entidad = await mongo.get('entidades', id)
+  if (entidad !== null) {
+    //Permite que se agregen los datos proporcionados para que no sea necesario indicar todos los datos
+    entidad = {
+      ...entidad,
+      ...(request.body.razon && { razon: request.body.razon}),
+      ...(request.body.tipoDoc && {tipoDoc: request.body.tipoDoc}),
+      ...(request.body.numeroDoc && {numeroDoc: request.body.numeroDoc})
+    }
+    const data = {
+      razon: entidad.razon,
+      tipoDoc: entidad.tipoDoc,
+      numeroDoc: entidad.numeroDoc
+    }
+    await mongo.update('entidades', id, data)
+    response.status(200).json({
+      data: entidad,
+      message: 'Entidad editada'
+    })
+  }else{
+    response.status(404).json({
+      id: id,
+      message: 'No encontrado'
+    })
+  }
+})
+
+// Eliminar entidad
+app.delete('/api/entidades/:id', async (request, response) => {
+  const id = request.params.id
+  const eliminado = await mongo.delete('entidades', id)
+  if(eliminado != null){
+    response.status(200).json({
+      id: eliminado,
+      message: 'Entidad eliminada'
+    });
+  }else{
+    response.status(404).json({
+      id: id,
+      message: 'No encontrado'
+    })
+  }
+});
+
 
 /*
-// Obtener la lista de personas
-app.get('/api/persons', (request, response) => {
-  response.json(persons);
-});
-
-// Obtener un solo elemento de la lista de personas
-app.get('/api/persons/:id', (request, response) => {
-  const id = request.params.id;
-  const person = persons.find(person => person.id.toString() === id);
-  if (person) {
-    response.json(person);
-  } else {
-    response.status(404).end(`<h1>Error 404 Not Found</h1>
-                                <p>ID undefinided</p>`);
-  }
-});
-
-// Insertar elemento
-app.post('/api/persons', async (request, response) => {
-  if (!request.body.name || !request.body.number) {
-    return response.status(400).json({
-      error: 'Missing name or number'
-    })
-  } else {
-    const noUniqueName = persons.find(person => person.name == request.body.name)
-    if (noUniqueName) {
-      return response.status(422).json({
-        error: 'Unprocessable Entity - Unique name violation'
-      })
-    } else {
-      const person = {
-        name: request.body.name,
-        number: request.body.number
-      }
-      await mongo.create('personas', person)
-      response.status(201).json(person)
-    }
-  }
-})
-
-// Actualizar elemento
-app.put('/api/persons/:id', (request, response) => {
-  if (!request.body.name || !request.body.number) {
-    return response.status(400).json({
-      error: 'Missing name or number'
-    });
-  } else {
-    const noUniqueName = persons.find(person => person.name == request.body.name);
-    if (noUniqueName) {
-      return response.status(422).json({
-        error: 'Unprocessable Entity - Unique name violation'
-      });
-    } else {
-      const id = request.params.id
-      const person = {
-        id: id,
-        name: request.body.name,
-        number: request.body.number
-      };
-      persons.push(person);
-      response.json(persons);
-    }
-  }
-});
-
-// Eliminar un elemento
-app.delete('/api/persons/:id', (request, response) => {
-  const id = Number(request.params.id);
-  persons = persons.filter(person => person.id !== id);
-  response.status(204).end();
-});
-
 // midleware
 app.use((request, response, next) => {
   console.log('Pagina de error');

@@ -1,0 +1,25 @@
+#Datos para Entidades
+{
+    "_id": "60adde2f7c80d93878b59a2c",
+    "razon": "Prueba",
+    "tipoDoc": "RUC",
+    "numeroDoc": "20202020"
+},
+{
+    "_id": "60adf346d67b14379cfdd141",
+    "razon": "Prueba2",
+    "tipoDoc": "DNI",
+    "numeroDoc": "70580015"
+},
+{
+    "_id": "60adf356d67b14379cfdd142",
+    "razon": "Alejandra",
+    "tipoDoc": "DNI",
+    "numeroDoc": "705800151"
+},
+{
+    "_id": "60adf367d67b14379cfdd143",
+    "razon": "Byte",
+    "tipoDoc": "RUC",
+    "numeroDoc": "10705800151"
+}
