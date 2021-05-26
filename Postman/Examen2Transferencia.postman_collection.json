@@ -8,10 +8,53 @@
 		{
 			"name": "Transferencia",
 			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cantidad\": 2.15\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/transferencia/60adf356d67b14379cfdd142/60ae0be59d44654e08efb696/60ae0ba89d44654e08efb693",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"transferencia",
+						"60adf356d67b14379cfdd142",
+						"60ae0be59d44654e08efb696",
+						"60ae0ba89d44654e08efb693"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerTransferencias",
+			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3001/api/transferencia/entidad/60adf356d67b14379cfdd142",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"transferencia",
+						"entidad",
+						"60adf356d67b14379cfdd142"
+					]
 				}
 			},
 			"response": []

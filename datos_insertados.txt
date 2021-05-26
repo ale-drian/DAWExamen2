@@ -65,3 +65,31 @@
         "saldo": 70.5
     }
 ],
+
+#Datos transferencia
+"data": [
+    {
+        "_id": "60ae2fbfeeefcc019c8781ee",
+        "cuentaFrom": "60ae0ba89d44654e08efb693",
+        "cuentaTo": "60ae0be59d44654e08efb696",
+        "id_entidad": "60adf356d67b14379cfdd142",
+        "cantidad": 10.5,
+        "fecha": "2021-05-26T11:23:43.486Z"
+    },
+    {
+        "_id": "60ae2fcaeeefcc019c8781ef",
+        "cuentaFrom": "60ae0ba89d44654e08efb693",
+        "cuentaTo": "60ae0be59d44654e08efb696",
+        "id_entidad": "60adf356d67b14379cfdd142",
+        "cantidad": 5,
+        "fecha": "2021-05-26T11:23:54.550Z"
+    },
+    {
+        "_id": "60ae2fe7eeefcc019c8781f0",
+        "cuentaFrom": "60ae0be59d44654e08efb696",
+        "cuentaTo": "60ae0ba89d44654e08efb693",
+        "id_entidad": "60adf356d67b14379cfdd142",
+        "cantidad": 2.15,
+        "fecha": "2021-05-26T11:24:23.752Z"
+    }
+],

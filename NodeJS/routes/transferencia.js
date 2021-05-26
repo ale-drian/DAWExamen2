@@ -55,6 +55,7 @@ router.post('/api/transferencia/:idEntidad/:idFrom/:idTo', async(request, respon
                 const transferencia = {
                     cuentaFrom: ObjectId(cuentaFrom._id),
                     cuentaTo: ObjectId(cuentaTo._id),
+                    id_entidad: ObjectId(idEntidad),
                     cantidad: cantidad,
                     fecha: new Date()
                 }
@@ -76,6 +77,17 @@ router.post('/api/transferencia/:idEntidad/:idFrom/:idTo', async(request, respon
         })
     }
 
+})
+
+//Listar transferencias
+router.get('/api/transferencia/entidad/:idEntidad', async(request, response) => {
+    const idEntidad = request.params.idEntidad
+    const query = { "id_entidad": ObjectId(idEntidad) }
+    const transferencias = await mongo.getAll('transferencias', query)
+    response.status(200).json({
+        data: transferencias,
+        message: 'Transderencias Listadas de ' + idEntidad
+    })
 })
 
 export default router
