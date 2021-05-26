@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "2f8776f2-d063-40dc-bf75-ad9ceee194ca",
+		"name": "Examen2CRUDCuentasCupo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear CuentaCupo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nroCuenta\": \"435231\",\r\n    \"saldo\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/cuentas_cupo/60adf356d67b14379cfdd142",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"cuentas_cupo",
+						"60adf356d67b14379cfdd142"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar CuentaCupo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/cuentas_cupo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"cuentas_cupo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListarUna CuentaCupo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/cuentas_cupo/60adf910bec29a9a31777af1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"cuentas_cupo",
+						"60adf910bec29a9a31777af1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Cuenta de Entidad",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/cuentas_cupo/entidad/60adf356d67b14379cfdd142",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"cuentas_cupo",
+						"entidad",
+						"60adf356d67b14379cfdd142"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar CuentaCupo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/cuentas_cupo/60adf356d67b14379cfdd142/60ae0bdc9d44654e08efb695",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"cuentas_cupo",
+						"60adf356d67b14379cfdd142",
+						"60ae0bdc9d44654e08efb695"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,5 +1,6 @@
 import express from 'express'
 import routesEntidad from './routes/entidad'
+import routesCuentasCupo from './routes/cuentasCupo'
 
 
 const app = express()
@@ -10,6 +11,7 @@ const PORT = process.env.PORT;
 
 
 app.use('/', routesEntidad)
+app.use('/', routesCuentasCupo)
 
 
 /*
