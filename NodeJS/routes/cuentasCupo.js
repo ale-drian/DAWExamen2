@@ -7,6 +7,8 @@ const { MongoClient, ObjectId } = mongoDriver
 
 const mongo = new MongoDB()
 
+const baseURL = 'http://localhost:3001'
+
 const router = express.Router()
 
 // Listar cuentas
@@ -75,7 +77,7 @@ router.delete('/api/cuentas_cupo/:idEntidad/:id', async(request, response) => {
     const idEntidad = request.params.idEntidad
     const id = request.params.id
         // http://localhost no deberia estar (no se como usar la api dentro de la api)
-    const listaCuentasEntidad = await axios.get('http://localhost:3001/api/cuentas_cupo/entidad/' + idEntidad).then((result) => {
+    const listaCuentasEntidad = await axios.get(baseURL + '/api/cuentas_cupo/entidad/' + idEntidad).then((result) => {
         return result.data.data
     }).catch((error) => {
         return []
@@ -95,6 +97,32 @@ router.delete('/api/cuentas_cupo/:idEntidad/:id', async(request, response) => {
             message: 'No habilitado'
         })
     }
-});
+})
+
+// Obtener saldo por entidad
+router.get('/api/saldo_cuentas_cupo/:idEntidad', async(request, response) => {
+    const idEntidad = request.params.idEntidad
+    const listaCuentasEntidad = await axios.get(baseURL + '/api/cuentas_cupo/entidad/' + idEntidad).then((result) => {
+        return result.data.data
+    }).catch((error) => {
+        return []
+    });
+    let total = 0
+    const saldoCuentas = listaCuentasEntidad.map(cuenta => {
+        let objetoSaldo = {
+            _id: cuenta._id,
+            nroCuenta: cuenta.nroCuenta,
+            saldo: cuenta.saldo
+        }
+        total = Math.round((total + cuenta.saldo) * 100) / 100
+        return objetoSaldo
+    })
+    response.status(200).json({
+        entidad: idEntidad,
+        total: total,
+        data: saldoCuentas,
+        message: 'Cuentas y saldos por entidad'
+    })
+})
 
 export default router
